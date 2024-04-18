@@ -3,6 +3,7 @@ package experiments;
 import java.io.PrintWriter;
 import structures.AssociativeArray;
 import structures.KeyNotFoundException;
+import structures.NullKeyException;
 
 /**
  * An extension of the AssociativeArray class that reports each
@@ -62,8 +63,9 @@ public class ReportingAssociativeArray<K,V> extends AssociativeArray<K,V> {
    *
    * @throws KeyNotFoundException
    *   when the key does not appear in the associative array.
+   * @throws NullKeyException
    */
-  public V get(K key) throws KeyNotFoundException {
+  public V get(K key) throws KeyNotFoundException, NullKeyException {
     pen.print(name + ".get(" + key + ") = ");
     pen.flush();
     try {
@@ -79,7 +81,7 @@ public class ReportingAssociativeArray<K,V> extends AssociativeArray<K,V> {
   /**
    * Determine if key appears in the associative array.
    */
-  public boolean hasKey(K key) {
+  public boolean hasKey(K key)  {
     pen.print(name + ".hasKey(" + key + ") = ");
     pen.flush();
     boolean result = super.hasKey(key);
